@@ -16,7 +16,7 @@ spec:
   values:
     image:
       repository: kfirosb/podinfo
-      tag: dev-v13ofxnp
+      tag: dev-rraey5ct
     replicaCount: 1
     hpa:
       enabled: false
