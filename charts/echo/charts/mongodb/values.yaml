@@ -122,7 +122,7 @@ image:
 schedulerName: ""
 ## @param architecture MongoDB&reg; architecture (`standalone` or `replicaset`)
 ##
-architecture: standalone
+architecture: replicaset
 ## @param useStatefulSet Set to true to use a StatefulSet instead of a Deployment (only when `architecture=standalone`)
 ##
 useStatefulSet: false
@@ -139,7 +139,7 @@ auth:
   ## @param auth.rootPassword MongoDB&reg; root password
   ## ref: https://github.com/bitnami/bitnami-docker-mongodb/blob/master/README.md#setting-the-root-password-on-first-run
   ##
-  rootPassword: "password"
+  rootPassword: "kfir"
   ## MongoDB&reg; custom users and databases
   ## ref: https://github.com/bitnami/bitnami-docker-mongodb/blob/master/README.md#creating-users-and-databases-on-first-run
   ## @param auth.usernames List of custom users to be created during the initialization
@@ -330,7 +330,7 @@ labels: {}
 ## @param replicaCount Number of MongoDB&reg; nodes (only when `architecture=replicaset`)
 ## Ignored when mongodb.architecture=standalone
 ##
-replicaCount: 2
+replicaCount: 3
 ## @param strategyType StrategyType for MongoDB&reg; statefulset
 ## It can be set to RollingUpdate or Recreate by default.
 ##
