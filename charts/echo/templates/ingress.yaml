@@ -11,10 +11,10 @@ metadata:
 spec:
   tls:
   - hosts:
-    - cowsaywtf.tk
+    - echokfirb.tk
     secretName: kfirsecret
   rules:
-  - host: cowsaywtf.tk
+  - host: echokfirb.tk
     http:
       paths:
       - path: /
