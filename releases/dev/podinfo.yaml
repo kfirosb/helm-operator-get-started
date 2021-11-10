@@ -16,7 +16,7 @@ spec:
   values:
     app:
       image: kfirosb/podinfo
-      tag: dev-rraey5ct
+      tag: dev-echo5
       replicaCount: 1
     namespace: "dev" 
     hpa:
