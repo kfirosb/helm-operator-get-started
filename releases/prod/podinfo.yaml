@@ -14,10 +14,9 @@ spec:
     path: charts/podinfotest
     ref: master
   values:
-    app:
-      image: kfirosb/podinfo
+    image:
+      repository: kfirosb/podinfo
       tag: 1.0.0
-      replicaCount: 1
-    namespace: "prod" 
+    replicaCount: 1
     hpa:
-      enabled: false
+      enabled: falsesent

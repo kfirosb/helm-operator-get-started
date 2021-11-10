@@ -1,6 +1,9 @@
-app:
-  replicaCount: 1
-  image: "kfirosb/podinfo"
-  tag: "1.0.0"
-namespace: "helmecho"
+# app:
+#   replicaCount: 1
+#   image: "kfirosb/podinfo"
+#   tag: "1.0.0"
+# namespace: "helmecho"
 
+image:
+  repository: kfirosb/podinfo
+  tag: 1.0.0

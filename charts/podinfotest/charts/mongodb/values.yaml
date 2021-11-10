@@ -40,7 +40,7 @@ clusterDomain: cluster.local
 ##   kind: Service
 ##   metadata:
 ##     name: mongodb-primary
-##     namespace: helmecho
+##     namespace: the-mongodb-namespace
 ##     labels:
 ##       app.kubernetes.io/component: mongodb
 ##       app.kubernetes.io/instance: mongodb
@@ -139,7 +139,7 @@ auth:
   ## @param auth.rootPassword MongoDB&reg; root password
   ## ref: https://github.com/bitnami/bitnami-docker-mongodb/blob/master/README.md#setting-the-root-password-on-first-run
   ##
-  rootPassword: "pasword"
+  rootPassword: ""
   ## MongoDB&reg; custom users and databases
   ## ref: https://github.com/bitnami/bitnami-docker-mongodb/blob/master/README.md#creating-users-and-databases-on-first-run
   ## @param auth.usernames List of custom users to be created during the initialization
@@ -152,9 +152,9 @@ auth:
   ## @param auth.username DEPRECATED: use `auth.usernames` instead
   ## @param auth.password DEPRECATED: use `auth.passwords` instead
   ## @param auth.database DEPRECATED: use `auth.databases` instead
-  username: "user"
-  password: "pasword"
-  database: "echo"
+  username: ""
+  password: ""
+  database: ""
   ## @param auth.replicaSetKey Key used for authentication in the replicaset (only when `architecture=replicaset`)
   ##
   replicaSetKey: ""
@@ -537,7 +537,7 @@ initContainers: []
 ##     - name: LABEL_SELECTOR
 ##       value: "app.kubernetes.io/component=mongodb,app.kubernetes.io/instance=mongodb,app.kubernetes.io/name=mongodb"
 ##     - name: NAMESPACE
-##       value: "helmecho"
+##       value: "the-mongodb-namespace"
 ##     - name: DEBUG
 ##       value: "true"
 ##
