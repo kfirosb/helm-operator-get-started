@@ -6,15 +6,18 @@ metadata:
   namespace: prod
   annotations:
     fluxcd.io/automated: "true"
-    filter.fluxcd.io/chart-image: semver:~0.4
+    filter.fluxcd.io/chart-image: semver:~5
 spec:
   releaseName: podinfo-prod
   chart:
-    git: git@github.com:fluxcd/helm-operator-get-started
+    git: git@github.com:kfirosb/helm-operator-get-started
     path: charts/podinfo
     ref: master
   values:
-    image:
-      repository: stefanprodan/podinfo
-      tag: 0.4.11
-    replicaCount: 3
+    app:
+      image: kfirosb/podinfo
+      tag: dev-echo5
+      replicaCount: 1
+    namespace: "prod" 
+    hpa:
+      enabled: false

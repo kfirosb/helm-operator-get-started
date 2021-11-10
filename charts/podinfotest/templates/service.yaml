@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-service
+  namespace: {{ .Values.namespace }}
+spec:
+  type: LoadBalancer
+  selector:
+    app: echoapp
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 3000

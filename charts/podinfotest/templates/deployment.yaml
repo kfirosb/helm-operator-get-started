@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: echoapp-deployment
+  namespace: {{ .Values.namespace }}
+spec:
+  selector:
+    matchLabels:
+      app: echoapp
+  replicas: 2 # tells deployment to run 1 pods matching the template
+  template:{{ .Values.app.replicaCount }}
+    metadata:
+      labels:
+        app: echoapp
+    spec:
+      containers:
+      - name: echoapp
+        image: {{ .Values.app.image }}:{{ .Values.app.tag }}
+        # imagePullPolicy: Never
+        ports:
+        - containerPort: 3000
+        env:
+        - name: MONGODBURL
+          valueFrom:
+            configMapKeyRef:
+              name: mongodb-configmap
+              key:  mongodburl
+        - name:  PERSIST
+          valueFrom:
+            configMapKeyRef:
+              name: mongodb-configmap
+              key:  persist
+        - name:  LOGLEVEL
+          valueFrom:
+            configMapKeyRef:
+              name: mongodb-configmap
+              key:  loglevel   
+        resources:
+                  {{- toYaml .Values.resources | nindent 12 }}
+            {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
