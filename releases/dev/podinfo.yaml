@@ -18,5 +18,12 @@ spec:
       repository: stefanprodan/podinfo
       tag: dev-hdtwcel9
     replicaCount: 1
-    hpa:
-      enabled: false
+# =======
+#     app:
+#       image: kfirosb/podinfo
+#       tag: dev-rraey5ct
+#       replicaCount: 1
+#     namespace: "dev"
+# >>>>>>> e0a4ca4303c8041272ca473714b35f34958c597a
+#     hpa:
+#       enabled: false

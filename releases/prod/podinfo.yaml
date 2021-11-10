@@ -18,3 +18,12 @@ spec:
       repository: stefanprodan/podinfo
       tag: 0.4.11
     replicaCount: 3
+# =======
+#     app:
+#       image: kfirosb/podinfo
+#       tag: dev-rraey5ct
+#       replicaCount: 1
+#     namespace: "prod"
+#     hpa:
+#       enabled: false
+# >>>>>>> e0a4ca4303c8041272ca473714b35f34958c597a
