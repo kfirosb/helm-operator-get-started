@@ -15,7 +15,7 @@ spec:
     ref: master
   values:
     image:
-      repository: kfirosb/echo
+      repository: kfirosb/podinfo
       tag: 1.0.0
     replicaCount: 2
     hpa:
