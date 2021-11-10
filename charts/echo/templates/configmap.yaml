@@ -5,6 +5,6 @@ metadata:
   namespace: {{ .Values.namespace }}
 data:
     database_url: mongodb-service1
-    mongodburl:  mongodb://user:password@{{ .Release.Name }}-mongodb-0.{{ .Release.Name }}-mongodb-headless:27017/echo
+    mongodburl:  mongodb://user:password@{{ .Release.Name }}-mongodb.{{ .Release.Name }}-mongodb-headless:27017/echo
     persist: "true"
     loglevel: info
