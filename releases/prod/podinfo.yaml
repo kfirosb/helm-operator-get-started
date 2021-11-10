@@ -11,12 +11,13 @@ spec:
   releaseName: echo-prod
   chart:
     git: git@github.com:kfirosb/helm-operator-get-started
-    path: charts/podinfotest
+    path: charts/echo
     ref: master
   values:
     image:
       repository: kfirosb/podinfo
       tag: 1.0.0
     replicaCount: 1
+    namespace: prod
     hpa:
       enabled: falsesent

@@ -3,7 +3,6 @@
 #   image: "kfirosb/podinfo"
 #   tag: "1.0.0"
 namespace: "helmecho"
-
 image:
   repository: kfirosb/podinfo
   tag: 1.0.0
