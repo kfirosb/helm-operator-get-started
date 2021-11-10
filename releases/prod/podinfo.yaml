@@ -16,7 +16,7 @@ spec:
   values:
     image:
       repository: kfirosb/podinfo
-      tag: 1.0.0
+      tag: 1.0.1
     replicaCount: 1
     namespace: prod
     hpa:
