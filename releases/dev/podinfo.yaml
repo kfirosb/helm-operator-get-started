@@ -14,9 +14,10 @@ spec:
     path: charts/podinfo
     ref: master
   values:
-    image:
-      repository: kfirosb/podinfo
+    app:
+      image: kfirosb/podinfo
       tag: dev-rraey5ct
-    replicaCount: 1
+      replicaCount: 1
+    namespace: "dev" 
     hpa:
       enabled: false

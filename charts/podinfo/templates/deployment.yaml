@@ -2,20 +2,20 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: echoapp-deployment
-  namespace: helmecho
+  namespace: {{ .Values.namespace }}
 spec:
   selector:
     matchLabels:
       app: echoapp
   replicas: 2 # tells deployment to run 1 pods matching the template
-  template:
+  template:{{ .Values.app.replicaCount }}
     metadata:
       labels:
         app: echoapp
     spec:
       containers:
       - name: echoapp
-        image: europe-west3-docker.pkg.dev/unique-pixel-330311/echoapp/echoapp:1
+        image: {{ .Values.app.image }}:{{ .Values.app.tag }}
         # imagePullPolicy: Never
         ports:
         - containerPort: 3000
