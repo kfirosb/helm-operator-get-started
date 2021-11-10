@@ -1,37 +1,51 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: echoapp-deployment
-  namespace: {{ .Values.namespace }}
+  name: "{{ .Values.name }}"
+  labels:
+    app: "{{ .Values.name }}"
 spec:
+  replicas: 1
   selector:
     matchLabels:
-      app: echoapp
-  replicas: 2
-  template: 
+      app: "{{ .Values.name }}"
+  template:
     metadata:
       labels:
-        app: echoapp
+        app: "{{ .Values.name }}"
     spec:
       containers:
-      - name: echoapp
-        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}" 
-        # imagePullPolicy: Never
-        ports:
-        - containerPort: 3000
-        env:
-        - name: MONGODBURL
-          valueFrom:
-            configMapKeyRef:
-              name: mongodb-configmap
-              key:  mongodburl
-        - name:  PERSIST
-          valueFrom:
-            configMapKeyRef:
-              name: mongodb-configmap
-              key:  persist
-        - name:  LOGLEVEL
-          valueFrom:
-            configMapKeyRef:
-              name: mongodb-configmap
-              key:  loglevel   
+        - name: "{{ .Values.name }}"
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          resources:
+            limits:
+              cpu: 200m
+              memory: 256Mi
+            requests:
+              cpu: 100m
+              memory: 128Mi
+          ports:
+            - containerPort: {{ .Values.echo.containerPort }}
+          envFrom:
+          - configMapRef:
+              name: {{ .Values.echo.configmap }}
+          env:
+          - name: MONGODBURL
+            valueFrom:
+              secretKeyRef:
+                name: {{ .Values.echo.secret }}
+                key: MONGODBURL                       
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.echo.serv }}
+spec:
+  ports:
+  - port: 80
+    targetPort: {{ .Values.echo.containerPort }}
+    protocol: TCP
+    name: http
+  selector:
+    app: "{{ .Values.name }}"

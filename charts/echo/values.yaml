@@ -1,11 +1,21 @@
-# app:
-#   replicaCount: 1
-#   image: "kfirosb/podinfo"
-#   tag: "1.0.0"
-namespace: "default"
+# # app:
+# #   replicaCount: 1
+# #   image: "kfirosb/podinfo"
+# #   tag: "1.0.0"
+# namespace: "default"
+# image:
+#   repository: kfirosb/podinfo
+#   tag: 1.0.0
+# service:
+#   type: ClusterIP
+#   port: 80
+
+echo:
+  configmap: "confmap"
+  secret: "secret"
+  serv: "echoserv"
+  containerPort: 3000
+name: "echo"
 image:
   repository: kfirosb/podinfo
-  tag: 1.0.0
-service:
-  type: ClusterIP
-  port: 80
+  tag: "1.0.0"
