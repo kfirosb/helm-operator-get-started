@@ -12,7 +12,7 @@ spec:
   chart:
     git: git@github.com:kfirosb/helm-operator-get-started.git
     path: charts/podinfo
-    ref: main
+    ref: master
   values:
     image:
       repository: kfirosb/podinfo
